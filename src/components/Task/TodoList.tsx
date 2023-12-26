@@ -19,8 +19,8 @@ const TodoList = () => {
   return (
     <>
       <List>
-        {list.map((item: Task) => {
-          return <TodoItem key={item.id} item={item} />;
+        {list.map((item: Task, pos: number) => {
+          return <TodoItem key={`${item.id}-${pos}`} item={item} />;
         })}
       </List>
       <Button variant="outlined" onClick={handleClear}>

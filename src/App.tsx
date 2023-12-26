@@ -5,8 +5,10 @@ import RestrictedRoute from "./routes/RestrictedRoute";
 import PrivateRoutes from "./routes/private.routes";
 import { useDispatch } from "react-redux";
 import { authActions } from "./store/auth";
-import { TOKEN_NAME } from "./constants";
+import { TASK_LIST, TOKEN_NAME } from "./constants";
 import Header from "./components/Header/Header";
+import { Task } from "./types";
+import { tasksActions } from "./store/task";
 
 const App = (): JSX.Element => {
   const dispatch = useDispatch();
@@ -14,6 +16,14 @@ const App = (): JSX.Element => {
   if (localStorage.getItem(TOKEN_NAME)) {
     dispatch(authActions.login());
   }
+  const tasks = localStorage.getItem(TASK_LIST);
+  if (tasks) {
+    dispatch(tasksActions.clearAll());
+    JSON.parse(tasks).map((task: Task) => {
+      dispatch(tasksActions.addTask(task));
+    })
+  }
+
 
   return (
     <BrowserRouter>
