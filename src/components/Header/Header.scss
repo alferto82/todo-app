@@ -1,0 +1,9 @@
+@import "../../scss/constants.scss";
+
+header {
+    padding: 0.5em;
+    text-align: center;
+    background: $PRINCIPAL_COLOR;
+    color: $WHITE_COLOR;
+    font-size: 10px;
+  }
