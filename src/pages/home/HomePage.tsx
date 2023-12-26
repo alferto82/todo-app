@@ -17,11 +17,11 @@ const HomePage = (): JSX.Element => {
 
   return (
     <Container sx={{ textAlign: "center" }}>
-      <Box textAlign="center" paddingTop="1em" height="2em">
+      <Box textAlign="center" paddingTop="1em" height="2em" paddingBottom="1em">
         <TextField
           sx={{ width: "70%", marginBottom: 1 }}
           variant="outlined"
-          onChange={(e) => setInputValue(e.target.value)}
+          onChange={(e: any) => setInputValue(e.target.value)}
           label="Type your task"
           value={inputValue}
         />

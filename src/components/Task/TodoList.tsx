@@ -3,6 +3,7 @@ import { RootState } from "../../store";
 import TodoItem from "./TodoItem";
 import { Button, List } from "@mui/material";
 import { tasksActions } from "../../store/task";
+import { Task } from "../../types";
 
 const TodoList = () => {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ const TodoList = () => {
   return (
     <>
       <List>
-        {list.map((item) => {
+        {list.map((item: Task) => {
           return <TodoItem key={item.id} item={item} />;
         })}
       </List>

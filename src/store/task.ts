@@ -7,7 +7,7 @@ const tasksSlice = createSlice({
   name: "tasks",
   initialState: initialTasksState,
   reducers: {
-    addTask: (state, action: PayloadAction<Task>) => {
+    addTask: (state: Task[], action: PayloadAction<Task>) => {
       const newTask: Task = {
         id: new Date().getTime().toString(),
         title: action.payload.title,
@@ -17,21 +17,21 @@ const tasksSlice = createSlice({
     },
 
     //Remove item
-    removeTask: (state, action: PayloadAction<{ id: string }>) => {
+    removeTask: (state: Task[], action: PayloadAction<{ id: string }>) => {
       return state.filter((item) => item.id !== action.payload.id);
     },
 
     //Update item
-    updateTask: (state, action: PayloadAction<Task>) => {
-      const indexItem = state.find((item) => item.id === action.payload.id);
+    updateTask: (state: Task[], action: PayloadAction<Task>) => {
+      const indexItem = state.find((item: Task) => item.id === action.payload.id);
       if (indexItem) {
         indexItem.title = action.payload.title;
       }
     },
 
     //Toggle check
-    toggleCheck: (state, action: PayloadAction<{ id: string }>) => {
-      const indexItem = state.find((item) => item.id === action.payload.id);
+    toggleCheck: (state: Task[], action: PayloadAction<{ id: string }>) => {
+      const indexItem = state.find((item: Task) => item.id === action.payload.id);
       if (indexItem) {
         indexItem.check = !indexItem.check;
         state.splice(state.indexOf(indexItem), 1);

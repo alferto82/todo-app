@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { TOKEN_NAME } from "../constants";
+import { AuthStoreType } from "../types";
 
 const initialAuthState = {
   isAuthenticated: false,
@@ -9,11 +10,11 @@ const authSlice = createSlice({
   name: "authentication",
   initialState: initialAuthState,
   reducers: {
-    login(state) {
+    login(state: AuthStoreType) {
       localStorage.setItem(TOKEN_NAME, "FAKE-TOKEN");
       state.isAuthenticated = true;
     },
-    logout(state) {
+    logout(state: AuthStoreType) {
       localStorage.removeItem(TOKEN_NAME);
       state.isAuthenticated = false;
     },
